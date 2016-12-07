@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PeladaFC</string>
+    <string name="ws_read_error">Unable to read ws data</string>
+    <string name="ws_error">Unable to connect to ws</string>
+</resources>
