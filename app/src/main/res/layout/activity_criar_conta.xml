@@ -26,11 +26,40 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="180dp"/>
 
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"/>
+
+
+    <EditText
+        android:id="@+id/etSenha"
+        android:inputType="textPassword"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="Senha"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="320dp"/>
+
+
+    <EditText
+        android:id="@+id/etConfirmarSenha"
+        android:inputType="textPassword"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="Confirme sua senha"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="390dp"/>
+
+
     <Button
         android:layout_height="wrap_content"
         android:layout_width="300dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="460dp"
         android:text="Criar Conta"
         android:onClick="criarContaOnClick" />
 </RelativeLayout>

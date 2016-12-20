@@ -7,17 +7,23 @@ package com.br.peladafc.gateway;
 public final class CriarContaParams {
 
     public final String nomeCompleto;
+    public final String email;
+    public final String senha;
     public final byte[] foto;
 
-    public CriarContaParams(String nomeCompleto)
+    public CriarContaParams(String nomeCompleto, String email, String senha)
     {
         this.nomeCompleto = nomeCompleto;
+        this.email = email;
+        this.senha = senha;
         this.foto = null;
     }
 
-    public CriarContaParams(String nomeCompleto, byte[] foto)
+    public CriarContaParams(String nomeCompleto, String email, String senha, byte[] foto)
     {
         this.nomeCompleto = nomeCompleto;
+        this.email = email;
+        this.senha = senha;
         this.foto = foto;
     }
 

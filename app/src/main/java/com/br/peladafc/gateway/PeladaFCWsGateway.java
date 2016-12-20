@@ -36,6 +36,8 @@ public final class PeladaFCWsGateway {
         try{
             JSONObject json = new JSONObject();
             json.put("NomeCompletoPeladeiro", params.nomeCompleto);
+            json.put("Email", params.email);
+            json.put("Senha", params.senha);
             json.put("Foto", params.foto == null ? null : Base64.encodeToString(params.foto, Base64.DEFAULT));
             JSONObject dados = post("Conta/Criar", json.toString());
             return UUID.fromString(dados.getString("Id"));

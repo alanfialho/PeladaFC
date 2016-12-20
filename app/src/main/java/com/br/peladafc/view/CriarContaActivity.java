@@ -32,6 +32,24 @@ public class CriarContaActivity extends AppCompatActivity {
         return (ImageSelector) getFragmentManager().findFragmentById(R.id.isProfile);
     }
 
+    public String getEmail()
+    {
+        EditText editText   = (EditText)findViewById(R.id.etEmail);
+        return editText.getText().toString();
+    }
+
+    public String getSenha()
+    {
+        EditText editText   = (EditText)findViewById(R.id.etSenha);
+        return editText.getText().toString();
+    }
+
+    public String getConfirmarSenha()
+    {
+        EditText editText   = (EditText)findViewById(R.id.etConfirmarSenha);
+        return editText.getText().toString();
+    }
+
     public void mostrarMensagem(final String mensagem){
         if(dialog.isShowing())
             esconderMensagemDeEspera();
