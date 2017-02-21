@@ -2,13 +2,16 @@ package com.br.peladafc.controller;
 
 import android.os.AsyncTask;
 import android.util.Log;
-
 import com.br.peladafc.gateway.CriarContaParams;
 import com.br.peladafc.gateway.GatewayOperationException;
 import com.br.peladafc.gateway.PeladaFCWsGateway;
+import com.br.peladafc.utils.CryptoHelper;
 import com.br.peladafc.utils.MemoriaCompartilhadaHelper;
 import com.br.peladafc.view.CriarContaActivity;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
 /**
@@ -23,33 +26,36 @@ public class CriarContaController {
         this.activity = activity;
     }
 
-    public void ExecutarCriarConta(){
-        activity.mostrarMensagemDeEspera();
-        CriarContaTask task = new CriarContaTask();
+    public void ExecutarCriarConta() {
 
-        CriarContaParams params = activity.getIsProfile().wasDefaultImageChanged() ?
-                new CriarContaParams(activity.getNomeCompleto(),
-                        activity.getEmail(),
-                        activity.getSenha(),
-                        activity.getIsProfile().getImage()) :
+        if (activity.getSenha().equals(activity.getConfirmarSenha())) {
 
-                new CriarContaParams(activity.getNomeCompleto(),
-                        activity.getEmail(),
-                        activity.getSenha());
+            activity.mostrarMensagemDeEspera();
+            String hash = CryptoHelper.GenerateSHA256(activity.getSenha());
+            CriarContaTask task = new CriarContaTask();
 
-        task.execute(params);
+            CriarContaParams params = activity.getIsProfile().wasDefaultImageChanged() ?
+                    new CriarContaParams(activity.getNomeCompleto(),
+                            activity.getEmail(),
+                            hash,
+                            activity.getIsProfile().getImage()) :
+
+                    new CriarContaParams(activity.getNomeCompleto(),
+                            activity.getEmail(),
+                            hash);
+
+            task.execute(params);
+        }
+        else
+            activity.mostrarMensagem("A senha digitada não é igual a senha de confirmação");
     }
-
     private class CriarContaTask extends AsyncTask<CriarContaParams, Void, UUID>{
 
         @Override
         protected UUID doInBackground(CriarContaParams... params) {
 
             try {
-                if(activity.getSenha().equals(activity.getConfirmarSenha()))
-                    return PeladaFCWsGateway.CriarConta(params[0]);
-                else
-                    activity.mostrarMensagem("A senha digitada não é igual a senha de confirmação");
+                return PeladaFCWsGateway.CriarConta(params[0]);
             } catch (GatewayOperationException e) {
                 activity.mostrarMensagem(e.getMessage());
             }catch (Exception e){

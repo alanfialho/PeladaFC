@@ -37,7 +37,7 @@ public final class PeladaFCWsGateway {
             JSONObject json = new JSONObject();
             json.put("NomeCompletoPeladeiro", params.nomeCompleto);
             json.put("Email", params.email);
-            json.put("Senha", params.senha);
+            json.put("HashSenha", params.hashSenha);
             json.put("Foto", params.foto == null ? null : Base64.encodeToString(params.foto, Base64.DEFAULT));
             JSONObject dados = post("Conta/Criar", json.toString());
             return UUID.fromString(dados.getString("Id"));
@@ -56,7 +56,7 @@ public final class PeladaFCWsGateway {
             connection.setRequestMethod("POST");
             connection.setDoInput(true);
             connection.setDoOutput(true);
-            connection.setReadTimeout(10000);
+            connection.setReadTimeout(30000);
             connection.setConnectTimeout(15000);
             connection.setRequestProperty("Content-Type","application/json");
             OutputStream os = connection.getOutputStream();
@@ -88,22 +88,26 @@ public final class PeladaFCWsGateway {
         try{
             int responseCode = connection.getResponseCode();
 
-            if(responseCode == HttpURLConnection.HTTP_OK){
-                StringBuilder builder = new StringBuilder();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                String line;
-
-                while ((line = reader.readLine()) != null){
-                    builder.append(line);
-                }
-
-                return  new JSONObject(builder.toString());
-            }
-            else {
+            if(responseCode != HttpURLConnection.HTTP_OK &&  responseCode != HttpURLConnection.HTTP_BAD_REQUEST){
                 Log.e(TAG, "on getResposta HTTP: " + responseCode);
                 throw new GatewayOperationException("Erro de conexão com servidor");
             }
 
+            StringBuilder builder = new StringBuilder();
+            BufferedReader reader = new BufferedReader(
+                    responseCode == HttpURLConnection.HTTP_OK ?
+                            new InputStreamReader(connection.getInputStream()) :
+                            new InputStreamReader(connection.getErrorStream()));
+            String line;
+
+            while ((line = reader.readLine()) != null){
+                builder.append(line);
+            }
+
+            if(responseCode == HttpURLConnection.HTTP_BAD_REQUEST)
+                throw new GatewayOperationException(builder.toString());
+
+            return new JSONObject(builder.toString());
         }
         catch (IOException e){
             Log.e(TAG, "on getResposta: " + e.getMessage());
