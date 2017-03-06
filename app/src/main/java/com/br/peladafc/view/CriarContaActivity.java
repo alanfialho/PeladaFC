@@ -11,10 +11,9 @@ import com.br.peladafc.controller.CriarContaController;
 import com.br.peladafc.view.components.ImageSelector;
 
 
-public class CriarContaActivity extends AppCompatActivity {
+public class CriarContaActivity extends BaseActivity{
 
     private CriarContaController controller;
-    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,27 +47,6 @@ public class CriarContaActivity extends AppCompatActivity {
     {
         EditText editText   = (EditText)findViewById(R.id.etConfirmarSenha);
         return editText.getText().toString();
-    }
-
-    public void mostrarMensagem(final String mensagem){
-        if(dialog.isShowing())
-            esconderMensagemDeEspera();
-
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast toast = Toast.makeText(getApplicationContext(), mensagem, Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
-    }
-
-    public void mostrarMensagemDeEspera(){
-        dialog = ProgressDialog.show(this, "Executando", "Aguarde...", true);
-    }
-
-    public void esconderMensagemDeEspera(){
-        dialog.dismiss();
     }
 
     protected void criarContaOnClick(View view){
