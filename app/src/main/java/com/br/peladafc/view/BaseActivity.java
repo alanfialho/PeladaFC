@@ -8,7 +8,7 @@ import android.widget.Toast;
  * Created by alan on 22/02/2017.
  */
 
-public class BaseActivity extends AppCompatActivity{
+public abstract class BaseActivity extends AppCompatActivity{
 
         private ProgressDialog dialog;
 

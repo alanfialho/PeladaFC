@@ -2,4 +2,7 @@
     <string name="app_name">PeladaFC</string>
     <string name="ws_read_error">Unable to read ws data</string>
     <string name="ws_error">Unable to connect to ws</string>
+    <string name="validation_required">campo obrigatório</string>
+    <string name="validation_email">por favor, insira um email válido</string>
+    <string name="validation_min_lenght_6">este campo deve conter no minimo 6 caracteres</string>
 </resources>
