@@ -1,9 +1,12 @@
 package com.br.peladafc.view;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import com.br.peladafc.R;
 import com.br.peladafc.controller.AutenticarContaController;
+import com.br.peladafc.controller.CriarContaController;
+
 import eu.inmite.android.lib.validations.form.FormValidator;
 import eu.inmite.android.lib.validations.form.annotations.NotEmpty;
 import eu.inmite.android.lib.validations.form.annotations.RegExp;
@@ -45,5 +48,11 @@ public class AutenticarContaActivity extends BaseActivity {
         if(FormValidator.validate(this, new SimpleErrorPopupCallback(this, true))){
             controller.ExecutarAutenticarConta();
         }
+    }
+
+    protected void criarContaOnClick(View view){
+
+        Intent intent = new Intent(this, CriarContaActivity.class);
+        startActivity(intent);
     }
 }

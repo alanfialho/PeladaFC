@@ -29,7 +29,9 @@ import static android.content.ContentValues.TAG;
 public final class PeladaFCWsGateway {
 
     private static final String logError = "on peladafc gateway: ";
-    private static String baseURL = "http://10.0.2.2:55861/api/";
+    //private static String baseURL = "http://10.0.2.2:55861/api/";
+    private static String baseURL = "http://192.168.0.107:55861/api/";
+
 
     private PeladaFCWsGateway(){}
 
