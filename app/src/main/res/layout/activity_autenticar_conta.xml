@@ -36,7 +36,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="245dp"
         android:text="Entrar"
-        android:onClick="entrarOnClick" />
+        android:onClick="btEntrarOnClick" />
 
     <TextView
         android:id="@+id/tvCriarConta"
@@ -45,7 +45,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="315dp"
         android:text="Não possui uma conta, clique aqui"
-        android:onClick="criarContaOnClick" />
+        android:onClick="tvCriarContaOnClick" />
 
 
 </RelativeLayout>

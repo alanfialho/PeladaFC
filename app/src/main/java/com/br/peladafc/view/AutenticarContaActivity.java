@@ -43,14 +43,14 @@ public class AutenticarContaActivity extends BaseActivity {
         return etSenha.getText().toString();
     }
 
-    protected void entrarOnClick(View view){
+    protected void btEntrarOnClick(View view){
 
         if(FormValidator.validate(this, new SimpleErrorPopupCallback(this, true))){
             controller.ExecutarAutenticarConta();
         }
     }
 
-    protected void criarContaOnClick(View view){
+    protected void tvCriarContaOnClick(View view){
 
         Intent intent = new Intent(this, CriarContaActivity.class);
         startActivity(intent);

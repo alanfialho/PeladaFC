@@ -5,4 +5,21 @@
     <string name="validation_required">campo obrigatório</string>
     <string name="validation_email">por favor, insira um email válido</string>
     <string name="validation_min_lenght_6">este campo deve conter no minimo 6 caracteres</string>
+    <string name="spnNotificacaoPrompt">Selecione os dias da semana que ocorre a pelada</string>
+
+    <string-array name="spnNotificacaoList">
+        <item>uma unica vez na data inicial</item>
+        <item>diaria</item>
+        <item>semanal</item>
+    </string-array>
+
+    <string-array name="lvSemanaList">
+        <item>Segunda - Feira</item>
+        <item>Terça - Feira</item>
+        <item>Quarta - Feira</item>
+        <item>Quinta - Feira</item>
+        <item>Sexta - Feira</item>
+        <item>Sabado</item>
+        <item>Domingo</item>
+    </string-array>
 </resources>

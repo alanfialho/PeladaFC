@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_criar_pelada"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorBackground"
+    tools:context="com.br.peladafc.view.CriarPeladaActivity">
+
+   <ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+       <RelativeLayout
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:id="@+id/rlCriarPeladaActivity"    >
+
+           <TextView
+                android:id="@+id/tvNome"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Nome da pelada"/>
+
+
+           <EditText
+                android:id="@+id/etNome"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvNome"/>
+
+            <TextView
+                android:id="@+id/tvHorario"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_alignLeft="@id/etNome"
+                android:layout_below="@id/etNome"
+                android:text="Horario de inicio"/>
+
+            <TimePicker
+                android:id="@+id/tpHorario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvHorario"
+                android:timePickerMode="spinner"/>
+
+            <TextView
+                android:id="@+id/tvData"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/tpHorario"
+                android:layout_alignLeft="@id/etNome"
+                android:text="Data de inicio"/>
+
+            <DatePicker
+                android:id="@+id/dpDataInicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvData"
+                android:layout_alignLeft="@id/etNome"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner"/>
+
+           <TextView
+               android:id="@+id/tvNotificacao"
+               android:layout_height="wrap_content"
+               android:layout_width="wrap_content"
+               android:layout_below="@id/dpDataInicio"
+               android:text="Escolha a frequencia da notificação"/>
+
+
+           <Spinner
+               android:id="@+id/spnNotificacao"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/tvNotificacao"
+               android:entries="@array/spnNotificacaoList"/>
+
+           <TextView
+               android:id="@+id/tvLocalizacao"
+               android:layout_height="wrap_content"
+               android:layout_width="wrap_content"
+               android:layout_below="@id/spnNotificacao"
+               android:text="Endereço da pelada"/>
+
+           <EditText
+               android:id="@+id/etLocalizacao"
+               android:layout_width="300dp"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/tvLocalizacao"/>
+
+           <Button
+               android:id="@+id/btConcluir"
+               android:layout_height="wrap_content"
+               android:layout_width="300dp"
+               android:layout_centerHorizontal="true"
+               android:layout_below="@id/etLocalizacao"
+               android:text="Concluir"
+               android:onClick="btConcluirOnClick" />
+
+
+       </RelativeLayout>
+
+   </ScrollView>
+
+</RelativeLayout>
